@@ -8,21 +8,12 @@ return new class extends Migration
 {
   public function up(): void
   {
-    Schema::create('sub_activities', function (Blueprint $table) {
+    Schema::create('activities', function (Blueprint $table) {
       $table->id();
-
-      $table->foreignId('activity_id')
-        ->nullable()
-        ->constrained()
-        ->onDelete('cascade');
 
       $table->string('description')
         ->nullable()
-        ->comment('Descrição da sub-atividade');
-
-      $table->unsignedInteger('workload')
-        ->nullable()
-        ->comment('Carga horária padrão');
+        ->comment('Descrição da atividade');
 
       $table->unsignedInteger('workload_max')
         ->nullable()
@@ -31,12 +22,12 @@ return new class extends Migration
       $table->timestamps();
 
       // Indexes for query optimization
-      $table->index('activity_id');
+      $table->index('description', 'idx_activities_description');
     });
   }
 
   public function down(): void
   {
-    Schema::dropIfExists('sub_activities');
+    Schema::dropIfExists('activities');
   }
 };

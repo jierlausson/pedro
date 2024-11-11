@@ -8,18 +8,22 @@ return new class extends Migration
 {
   public function up(): void
   {
-    Schema::create('activities', function (Blueprint $table) {
+    Schema::create('units', function (Blueprint $table) {
       $table->id();
-      $table->foreignId('sub_activity_id')->nullable()->constrained();
-      $table->string('description')->nullable();
-      $table->integer('workload_max')->nullable();
+
+      $table->string('description')
+        ->nullable()
+        ->comment('Descrição da unidade');
+
       $table->timestamps();
-      $table->softDeletes();
+
+      // Indexes for query optimization
+      $table->index('description', 'idx_units_description');
     });
   }
 
   public function down(): void
   {
-    Schema::dropIfExists('activities');
+    Schema::dropIfExists('units');
   }
 };
