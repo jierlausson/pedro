@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SubActivity extends Model
 {
-  use HasFactory, SoftDeletes;
+  use HasFactory;
 
   protected $fillable = [
-    'class_room_id',
+    'activity_id',
     'description',
     'workload',
+    'workload_max'
   ];
 
   public function activity(): HasOne
