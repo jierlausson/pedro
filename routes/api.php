@@ -7,10 +7,10 @@ use App\Http\Controllers\SubActivityController;
 use App\Http\Controllers\UnitController;
 
 Route::get('/', function () {
-  return response()->json(['message' => 'API Pedro Rodrigues'])->name('home');
+  return view('documentation');
 });
 
-Route::get('/test', function () {
+Route::get('/up', function () {
   return response()->json(['message' => 'API route is working']);
 });
 

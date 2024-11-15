@@ -14,9 +14,31 @@ class UnitController extends Controller
     return response()->json($units, 200);
   }
 
-  public function store(Request $request) {}
+  public function store(Request $request): JsonResponse
+  {
+    $request->validate([
+      'name' => 'required|string|max:255',
+      'description' => 'nullable|string|max:255',
+    ]);
 
-  public function update(Request $request, Unit $unit) {}
+    $unit = Unit::create($request->all());
+    return response()->json($unit, 201);
+  }
 
-  public function destroy(Unit $unit) {}
+  public function update(Request $request, Unit $unit): JsonResponse
+  {
+    $request->validate([
+      'name' => 'required|string|max:255',
+      'description' => 'nullable|string|max:255',
+    ]);
+
+    $unit->update($request->all());
+    return response()->json($unit, 200);
+  }
+
+  public function destroy(Unit $unit): JsonResponse
+  {
+    $unit->delete();
+    return response()->json(['message' => 'Unit deleted successfully'], 200);
+  }
 }

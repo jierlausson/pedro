@@ -17,8 +17,8 @@ class SubActivityController extends Controller
   public function store(Request $request): JsonResponse
   {
     $request->validate([
-      'activity_id' => 'required|exists:activity,id',
-      'class_room_id' => 'exists:class_room,id',
+      'activity_id' => 'required|exists:activities,id',
+      'class_room_id' => 'nullable|exists:class_rooms,id',
       'description' => 'required|string|max:255',
       'workload_max' => 'integer|min:1',
       'workload' => 'integer|min:1',
@@ -31,8 +31,8 @@ class SubActivityController extends Controller
   public function update(Request $request, SubActivity $subActivity): JsonResponse
   {
     $request->validate([
-      'activity_id' => 'required|exists:activity,id',
-      'class_room_id' => 'exists:class_room,id',
+      'activity_id' => 'required|exists:activities,id',
+      'class_room_id' => 'nullable|exists:class_rooms,id',
       'description' => 'required|string|max:255',
       'workload_max' => 'integer|min:1',
       'workload' => 'integer|min:1',
