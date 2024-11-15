@@ -94,7 +94,7 @@
 <body>
   <header>
     <h1>Documentação da API</h1>
-    <p>Descrição completa dos endpoints disponíveis, com exemplos de request e response.</p>
+    <p>Descrição simplificada dos endpoints disponíveis, com exemplos de request e response.</p>
   </header>
 
   <button class="toggle-btn" onclick="toggleDarkMode()">Modo Claro/Escuro</button>
@@ -102,8 +102,8 @@
   <div class="content">
     <!-- Root Endpoint -->
     <section class="endpoint">
-      <h2>Root Endpoint</h2>
-      <p>Retorna uma mensagem indicando que a API está funcionando.</p>
+      <h2>Documentação Simplificada</h2>
+      <p>Retorna informações bãsicas sobre a API.</p>
       <pre><code>GET    /</code></pre>
       <h4>Exemplo de Response:</h4>
       <pre><code>{
@@ -127,7 +127,7 @@
     <!-- Activities -->
     <section class="endpoint">
       <h2>Activities</h2>
-      <p>Gerencia atividades na aplicação.</p>
+      <p>Gerencia atividades.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/activities</code></pre>
       <pre><code>POST   /api/activities</code></pre>
@@ -154,7 +154,7 @@
     <!-- Class Rooms -->
     <section class="endpoint">
       <h2>Class Rooms</h2>
-      <p>Gerencia salas de aula.</p>
+      <p>Gerencia aulas.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/class-rooms</code></pre>
       <pre><code>POST   /api/class-rooms</code></pre>
@@ -220,7 +220,7 @@
     <!-- Units -->
     <section class="endpoint">
       <h2>Units</h2>
-      <p>Gerencia unidades cadastradas.</p>
+      <p>Gerencia unidades.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/units</code></pre>
       <pre><code>POST   /api/units</code></pre>
