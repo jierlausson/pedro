@@ -25,6 +25,11 @@ class ActivityController extends Controller
     return response()->json($activity, 201);
   }
 
+  public function show(Activity $activity): JsonResponse
+  {
+    return response()->json($activity, 200);
+  }
+
   public function update(Request $request, Activity $activity): JsonResponse
   {
     $request->validate([

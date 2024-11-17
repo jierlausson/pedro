@@ -28,6 +28,11 @@ class SubActivityController extends Controller
     return response()->json($subActivity, 201);
   }
 
+  public function show(SubActivity $subActivity): JsonResponse
+  {
+    return response()->json($subActivity, 200);
+  }
+
   public function update(Request $request, SubActivity $subActivity): JsonResponse
   {
     $request->validate([

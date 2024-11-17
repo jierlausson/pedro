@@ -31,6 +31,11 @@ class ClassRoomController extends Controller
     return response()->json($classRoom, 201);
   }
 
+  public function show(ClassRoom $classRoom): JsonResponse
+  {
+    return response()->json($classRoom, 200);
+  }
+
   public function update(Request $request, ClassRoom $classRoom): JsonResponse
   {
     $request->validate([

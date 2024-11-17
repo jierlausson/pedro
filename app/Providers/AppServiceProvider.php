@@ -13,8 +13,8 @@ class AppServiceProvider extends ServiceProvider
 
   public function boot(): void
   {
-    Gate::define('viewApiDocs', function () {
-      return config('app.env') === 'production';
-    });
+    // Gate::define('viewApiDocs', function () {
+    //   return config('app.env') === 'production';
+    // });
   }
 }

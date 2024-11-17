@@ -25,6 +25,11 @@ class UnitController extends Controller
     return response()->json($unit, 201);
   }
 
+  public function show(Unit $unit): JsonResponse
+  {
+    return response()->json($unit, 200);
+  }
+
   public function update(Request $request, Unit $unit): JsonResponse
   {
     $request->validate([
