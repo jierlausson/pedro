@@ -127,10 +127,11 @@
     <!-- Activities -->
     <section class="endpoint">
       <h2>Activities</h2>
-      <p>Gerencia atividades.</p>
+      <p>Gerenciar atividades.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/activities</code></pre>
       <pre><code>POST   /api/activities</code></pre>
+      <pre><code>POST   /api/activities/{id}</code></pre>
       <pre><code>PUT    /api/activities/{id}</code></pre>
       <pre><code>DELETE /api/activities/{id}</code></pre>
 
@@ -154,10 +155,11 @@
     <!-- Class Rooms -->
     <section class="endpoint">
       <h2>Class Rooms</h2>
-      <p>Gerencia aulas.</p>
+      <p>Gerenciar aulas.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/class-rooms</code></pre>
       <pre><code>POST   /api/class-rooms</code></pre>
+      <pre><code>POST   /api/class-rooms/{id}</code></pre>
       <pre><code>PUT    /api/class-rooms/{id}</code></pre>
       <pre><code>DELETE /api/class-rooms/{id}</code></pre>
 
@@ -189,10 +191,11 @@
     <!-- Sub Activities -->
     <section class="endpoint">
       <h2>Sub Activities</h2>
-      <p>Gerencia subatividades relacionadas a atividades.</p>
+      <p>Gerenciar subatividades relacionadas a atividades.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/sub-activities</code></pre>
       <pre><code>POST   /api/sub-activities</code></pre>
+      <pre><code>POST   /api/sub-activities/{id}</code></pre>
       <pre><code>PUT    /api/sub-activities/{id}</code></pre>
       <pre><code>DELETE /api/sub-activities/{id}</code></pre>
 
@@ -200,8 +203,8 @@
       <pre><code>{
     "activity_id": 1,
     "description": "Subatividade de exemplo",
-    "workload_max": 10,
-    "workload": 5
+    "workload_max": 10, // carga horária max
+    "workload": 5 // carga horária
 }</code></pre>
 
       <h4>Exemplo de Response (200):</h4>
@@ -220,10 +223,11 @@
     <!-- Units -->
     <section class="endpoint">
       <h2>Units</h2>
-      <p>Gerencia unidades.</p>
+      <p>Gerenciar unidades.</p>
       <h4>Endpoints:</h4>
       <pre><code>GET    /api/units</code></pre>
       <pre><code>POST   /api/units</code></pre>
+      <pre><code>POST   /api/units/{id}</code></pre>
       <pre><code>PUT    /api/units/{id}</code></pre>
       <pre><code>DELETE /api/units/{id}</code></pre>
 
@@ -236,8 +240,8 @@
       <h4>Exemplo de Response (200):</h4>
       <pre><code>{
     "id": 1,
-    "name": "Unidade X",
-    "location": "Localização Y",
+    "name": "Unidade",
+    "description": "Descrição",
     "created_at": "2024-11-15T12:00:00Z",
     "updated_at": "2024-11-15T12:00:00Z"
 }</code></pre>
