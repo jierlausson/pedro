@@ -1,0 +1,993 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "REST API Pedro",
+        "description": "REST API -> TCC of Pedro Rodrigues Pereira",
+        "contact": {
+            "email": "jierlausson@hotmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/activities": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Listar atividades",
+                "description": "Retorna todas as atividades",
+                "operationId": "53e7a0b67f6097ed90245000764b2e5e",
+                "responses": {
+                    "200": {
+                        "description": "Lista de atividades",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Activity"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Create a new activity",
+                "operationId": "8aa12114961e22767ecdad7c24be367e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "description",
+                                    "workload_max"
+                                ],
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "workload_max": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Activity created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Activity"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/activities/{activity}": {
+            "get": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Retrieve a specific activity",
+                "operationId": "51fff196ee83942690de8b440e2ddfbe",
+                "parameters": [
+                    {
+                        "name": "activity",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Activity details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Activity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Update an activity",
+                "operationId": "bda87636e0bb8d2290b9a2280abcdbd5",
+                "parameters": [
+                    {
+                        "name": "activity",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "workload_max": {
+                                        "type": "integer"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Activity updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Activity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Activities"
+                ],
+                "summary": "Delete an activity",
+                "operationId": "e25deaa842b7124f291bd5245fcab496",
+                "parameters": [
+                    {
+                        "name": "activity",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Activity deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/class-rooms": {
+            "get": {
+                "tags": [
+                    "ClassRooms"
+                ],
+                "summary": "List all classrooms",
+                "operationId": "766c98f5bcc5ee6ee92613506f431a1c",
+                "responses": {
+                    "200": {
+                        "description": "List of classrooms",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/ClassRoom"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "ClassRooms"
+                ],
+                "summary": "Create a new classroom",
+                "operationId": "223f3e5bef66cc938217bbf04f69bc6c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "sub_activity_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "weight": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "class": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "class_time": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "day_month_year": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Classroom created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClassRoom"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/class-rooms/{classRoom}": {
+            "get": {
+                "tags": [
+                    "ClassRooms"
+                ],
+                "summary": "Retrieve a specific classroom",
+                "operationId": "f6329f88f51bfb80d0eba962fe7d19da",
+                "parameters": [
+                    {
+                        "name": "classRoom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Classroom details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClassRoom"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "ClassRooms"
+                ],
+                "summary": "Update a classroom",
+                "operationId": "01868ee1b5f8840c44d50502bca22fd2",
+                "parameters": [
+                    {
+                        "name": "classRoom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "sub_activity_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "unit_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "weight": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "max": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "class": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "class_time": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "day_month_year": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Classroom updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ClassRoom"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "ClassRooms"
+                ],
+                "summary": "Delete a classroom",
+                "operationId": "364fa9507f58d2fdc2f5371a7fbf647b",
+                "parameters": [
+                    {
+                        "name": "classRoom",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Classroom deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sub-activities": {
+            "get": {
+                "tags": [
+                    "SubActivities"
+                ],
+                "summary": "List all sub-activities",
+                "operationId": "9c61a0e984fb2ad44fa5a1afa3a2bf9c",
+                "responses": {
+                    "200": {
+                        "description": "List of sub-activities",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/SubActivity"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SubActivities"
+                ],
+                "summary": "Create a new sub-activity",
+                "operationId": "b0453c1dabe0909b264eb89b8bb016b0",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "activity_id": {
+                                        "type": "integer"
+                                    },
+                                    "class_room_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "workload_max": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "workload": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Sub-activity created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubActivity"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sub-activities/{subActivity}": {
+            "get": {
+                "tags": [
+                    "SubActivities"
+                ],
+                "summary": "Retrieve a specific sub-activity",
+                "operationId": "710d2995ffe7c9a03001cd3cc6dfb3a8",
+                "parameters": [
+                    {
+                        "name": "subActivity",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sub-activity details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubActivity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SubActivities"
+                ],
+                "summary": "Update a sub-activity",
+                "operationId": "9cfd7132011ae67f3bfa25e9098e3d9b",
+                "parameters": [
+                    {
+                        "name": "subActivity",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "activity_id": {
+                                        "type": "integer"
+                                    },
+                                    "class_room_id": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "workload_max": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    },
+                                    "workload": {
+                                        "type": "integer",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Sub-activity updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SubActivity"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SubActivities"
+                ],
+                "summary": "Delete a sub-activity",
+                "operationId": "367e0cd61d7eed349f8fa6237df544ab",
+                "parameters": [
+                    {
+                        "name": "subActivity",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sub-activity deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/units": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "List all units",
+                "operationId": "a57391dfe211a9ccc8c604ddacf0bdf3",
+                "responses": {
+                    "200": {
+                        "description": "List of units",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Unit"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Create a new unit",
+                "operationId": "5a978a16bf0d0521e351d3b5f3a39b5e",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Unit created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unit"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/units/{unit}": {
+            "get": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Retrieve a specific unit",
+                "operationId": "5cc6969e4da70828e852596deee69619",
+                "parameters": [
+                    {
+                        "name": "unit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unit details",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unit"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Update a unit",
+                "operationId": "e324211c54695b6cc6b8d0447a2568a1",
+                "parameters": [
+                    {
+                        "name": "unit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Unit updated",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unit"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Units"
+                ],
+                "summary": "Delete a unit",
+                "operationId": "2bde479ef6d3c6c15d8d6eec9edff638",
+                "parameters": [
+                    {
+                        "name": "unit",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Unit deleted",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Activity": {
+                "title": "Activity",
+                "description": "Modelo da atividade",
+                "required": [
+                    "id",
+                    "description",
+                    "workload_max"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID da atividade",
+                        "type": "integer"
+                    },
+                    "description": {
+                        "description": "Descrição da atividade",
+                        "type": "string"
+                    },
+                    "workload_max": {
+                        "description": "Carga horária máxima",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data de atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "ClassRoom": {
+                "title": "ClassRoom",
+                "description": "Modelo da sala de aula",
+                "required": [
+                    "id"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID da sala de aula",
+                        "type": "integer"
+                    },
+                    "sub_activity_id": {
+                        "description": "ID da subatividade associada",
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "unit_id": {
+                        "description": "ID da unidade associada",
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "description": {
+                        "description": "Descrição da sala de aula",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "weight": {
+                        "description": "Peso da sala de aula",
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "max": {
+                        "description": "Valor máximo da sala",
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "class": {
+                        "description": "Classe",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "class_time": {
+                        "description": "Tempo de aula",
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "day_month_year": {
+                        "description": "Data associada",
+                        "type": "string",
+                        "format": "date",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data de atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "SubActivity": {
+                "title": "SubActivity",
+                "description": "Modelo da subatividade",
+                "required": [
+                    "id",
+                    "activity_id",
+                    "description",
+                    "workload_max"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID da subatividade",
+                        "type": "integer"
+                    },
+                    "activity_id": {
+                        "description": "ID da atividade associada",
+                        "type": "integer"
+                    },
+                    "class_room_id": {
+                        "description": "ID da sala de aula associada",
+                        "type": "integer",
+                        "nullable": true
+                    },
+                    "description": {
+                        "description": "Descrição da subatividade",
+                        "type": "string"
+                    },
+                    "workload_max": {
+                        "description": "Carga horária máxima",
+                        "type": "integer"
+                    },
+                    "workload": {
+                        "description": "Carga horária atual",
+                        "type": "integer"
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data de atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            },
+            "Unit": {
+                "title": "Unit",
+                "description": "Modelo da unidade",
+                "required": [
+                    "id",
+                    "name"
+                ],
+                "properties": {
+                    "id": {
+                        "description": "ID da unidade",
+                        "type": "integer"
+                    },
+                    "name": {
+                        "description": "Nome da unidade",
+                        "type": "string"
+                    },
+                    "description": {
+                        "description": "Descrição da unidade",
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "Data de criação",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "updated_at": {
+                        "description": "Data de atualização",
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Activities",
+            "description": "Activities"
+        },
+        {
+            "name": "ClassRooms",
+            "description": "ClassRooms"
+        },
+        {
+            "name": "SubActivities",
+            "description": "SubActivities"
+        },
+        {
+            "name": "Units",
+            "description": "Units"
+        }
+    ]
+}

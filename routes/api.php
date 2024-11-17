@@ -5,14 +5,7 @@ use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\SubActivityController;
 use App\Http\Controllers\UnitController;
-
-Route::get('/', function () {
-  return view('documentation');
-});
-
-Route::get('/up', function () {
-  return response()->json(['message' => 'API route is working']);
-});
+use App\Http\Controllers\Controller;
 
 Route::apiResource('activities', ActivityController::class);
 Route::apiResource('class-rooms', ClassRoomController::class);
